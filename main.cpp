@@ -20,15 +20,35 @@ int main() {
     voyagerRoute.addWaypointAtBeginning(earth);
     voyagerRoute.addWaypointAtIndex(2, venus);
 
-    //voyagerRoute.removeWaypointAtBeginning();
-    //voyagerRoute.removeWaypointAtEnd();
-    //voyagerRoute.removeWaypointAtIndex(2);
+    // i added
+    /*
+    voyagerRoute.print();
+
+    voyagerRoute.setWaypoint(2, earth);
+
+
+    /*
+    Node<string> *test = voyagerRoute.getWaypoint(2);
+    if (test != NULL) {
+        test->print();
+    }
+    cout << endl;
+
+    /*
+    voyagerRoute.removeWaypointAtBeginning();
+    voyagerRoute.removeWaypointAtEnd();
+    voyagerRoute.removeWaypointAtIndex(2);
+    */
+
+    //voyagerRoute.removeWaypointAtIndex(-1);
+
+    // i added
+
 
 
     cout << "Voyager Route (Forward):\n";
     voyagerRoute.traverseForward();
 
-    /*
     cout << "\nVoyager Route (Backward):\n";
     voyagerRoute.traverseBackward();
 
@@ -37,7 +57,7 @@ int main() {
 
     voyagerRoute.removeWaypointAtIndex(2);
     cout << "\nAfter Removing Venus: \n";
-    */
+
     voyagerRoute.print();
 
     return 0;

@@ -87,8 +87,7 @@ public:
         }
 
         if (index == 0) {
-            addWaypointAtBeginning(data);
-            return;
+            return addWaypointAtBeginning(data);
         }
 
         Node<T> *current = head;
@@ -104,8 +103,7 @@ public:
         }
 
         if (current == tail) {
-            addWaypointAtEnd(data);
-            return;
+            return addWaypointAtEnd(data);
         }
 
         newNode->prev = current->prev;
@@ -151,10 +149,11 @@ public:
 
         if (index < 0) {
             cout << "Invalid index." << endl;
+            return;
         }
 
         if (index == 0) {
-            removeWaypointAtBeginning();
+            return removeWaypointAtBeginning();
         }
 
         Node<T> *current = head;
@@ -165,10 +164,11 @@ public:
 
         if (current == nullptr) {
             cout << "Invalid index." << endl;
+            return;
         }
 
         if (current == tail) {
-            removeWaypointAtEnd();
+            return removeWaypointAtEnd();
         }
 
         current->prev->next = current->next;
@@ -182,7 +182,7 @@ public:
             return;
         }
 
-        Node<T> *current = this->head;
+        Node<T> *current = head;
         while (current != nullptr) {
             cout << current->data << " -> ";
             current = current->next;
@@ -195,25 +195,63 @@ public:
             cout << "Journey has not started. No waypoints yet." << endl;
             return;
         }
+
+        Node<T> *current = tail;
+        while (current != nullptr) {
+            cout << current->data << " <- ";
+            current = current->prev;
+        }
+        cout << endl;
     }
 
-    Node<T>* getWaypoint(int index);
+    Node<T>* getWaypoint(int index) {
+        if (head == nullptr) {
+            cout << "Journey has not started. No waypoints yet." << endl;
+            return nullptr;
+        }
+
+        if (index < 0) {
+            cout << "Invalid index." << endl;
+            return nullptr;
+        }
+
+        if (index == 0) {
+            return head;
+        }
+
+        Node<T> *current = head;
+
+        for (int i = 0; i < index && current != nullptr; i++) {
+            current = current->next;
+        }
+
+        if (current == nullptr) {
+            cout << "Invalid index." << endl;
+            return nullptr;
+        }
+
+        if (current == tail) {
+            return tail;
+        }
+
+        return current;
+    }
 
     void setWaypoint(int index, T& data) {
+        if (this->head == nullptr) {
+            cout << "Journey has not started. No waypoints yet." << endl;
+            return;
+        }
 
+        Node<T> *current = getWaypoint(index);
+        if (current != nullptr) {
+            current->data = data;
+            return;
+        }
     }
 
 
     void print(){
-    /*
-        Node<T>* current = head;
-        while (current) {
-            current->print();
-            current = current->next;
-        }
-        cout << endl;
-        */
-
         Node<T> *current = this->head;
         while (current != nullptr) {
             cout << current->data << " ";
