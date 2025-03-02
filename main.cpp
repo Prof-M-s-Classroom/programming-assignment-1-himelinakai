@@ -20,6 +20,9 @@ int main() {
     voyagerRoute.addWaypointAtBeginning(earth);
     voyagerRoute.addWaypointAtIndex(2, venus);
 
+    //voyagerRoute.removeWaypointAtBeginning();
+    //voyagerRoute.removeWaypointAtEnd();
+
     /*
     cout << "Voyager Route (Forward):\n";
     voyagerRoute.traverseForward();

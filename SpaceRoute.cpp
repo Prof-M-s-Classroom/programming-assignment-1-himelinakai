@@ -54,7 +54,6 @@ public:
         Node<T> *newNode = new Node<T>(data);
 
         if (head == nullptr) {
-            cout << " empty";
             head = newNode;
             tail = newNode;
         }
@@ -115,8 +114,35 @@ public:
         current->prev = newNode;
     }
 
-    void removeWaypointAtBeginning();
-    void removeWaypointAtEnd();
+    void removeWaypointAtBeginning() {
+        if (head == nullptr) {
+            cout << "Journey has not started. No waypoints yet." << endl;
+            return;
+        }
+
+        Node<T> *current = head;
+        head = head->next;
+        if (head != nullptr) {
+            head->prev = nullptr;
+        }
+        delete current;
+
+    }
+
+    void removeWaypointAtEnd() {
+        if (head == nullptr) {
+            cout << "Journey has not started. No waypoints yet." << endl;
+            return;
+        }
+
+        Node<T> *current = tail;
+        tail = tail->prev;
+        if (tail != nullptr) {
+            tail->next = nullptr;
+        }
+        delete current;
+    }
+
     void removeWaypointAtIndex(int index);
     void traverseForward();
     void traverseBackward();
