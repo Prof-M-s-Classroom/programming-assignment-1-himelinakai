@@ -22,11 +22,13 @@ int main() {
 
     //voyagerRoute.removeWaypointAtBeginning();
     //voyagerRoute.removeWaypointAtEnd();
+    //voyagerRoute.removeWaypointAtIndex(2);
 
-    /*
+
     cout << "Voyager Route (Forward):\n";
     voyagerRoute.traverseForward();
 
+    /*
     cout << "\nVoyager Route (Backward):\n";
     voyagerRoute.traverseBackward();
 

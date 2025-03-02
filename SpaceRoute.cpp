@@ -143,9 +143,60 @@ public:
         delete current;
     }
 
-    void removeWaypointAtIndex(int index);
-    void traverseForward();
-    void traverseBackward();
+    void removeWaypointAtIndex(int index) {
+        if (head == nullptr) {
+            cout << "Journey has not started. No waypoints yet." << endl;
+            return;
+        }
+
+        if (index < 0) {
+            cout << "Invalid index." << endl;
+        }
+
+        if (index == 0) {
+            removeWaypointAtBeginning();
+        }
+
+        Node<T> *current = head;
+
+        for (int i = 0; i < index && current != nullptr; i++) {
+            current = current->next;
+        }
+
+        if (current == nullptr) {
+            cout << "Invalid index." << endl;
+        }
+
+        if (current == tail) {
+            removeWaypointAtEnd();
+        }
+
+        current->prev->next = current->next;
+        current->next->prev = current->prev;
+        delete current;
+    }
+
+    void traverseForward() {
+        if (head == nullptr) {
+            cout << "Journey has not started. No waypoints yet." << endl;
+            return;
+        }
+
+        Node<T> *current = this->head;
+        while (current != nullptr) {
+            cout << current->data << " -> ";
+            current = current->next;
+        }
+        cout << endl;
+    }
+
+    void traverseBackward() {
+        if (head == nullptr) {
+            cout << "Journey has not started. No waypoints yet." << endl;
+            return;
+        }
+    }
+
     Node<T>* getWaypoint(int index);
 
     void setWaypoint(int index, T& data) {
