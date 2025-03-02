@@ -131,18 +131,18 @@ public:
             return;
         }
 
+        Node<T> *current = tail;
+
         if (head == tail) {
             head = nullptr;
             tail = nullptr;
         }
         else {
-            Node<T> *current = tail;
             tail = tail->prev;
-            if (tail != nullptr) {
-                tail->next = nullptr;
-            }
-            delete current;
+            tail->next = nullptr;
         }
+
+        delete current;
     }
 
     void removeWaypointAtIndex(int index) {
@@ -235,7 +235,7 @@ public:
     }
 
     void setWaypoint(int index, T& data) {
-        if (this->head == nullptr) {
+        if (head == nullptr) {
             cout << "Journey has not started. No waypoints yet." << endl;
             return;
         }
@@ -249,7 +249,12 @@ public:
 
 
     void print(){
-        Node<T> *current = this->head;
+        if (head == nullptr) {
+            cout << "Journey has not started. No waypoints yet." << endl;
+            return;
+        }
+
+        Node<T> *current = head;
         while (current != nullptr) {
             cout << current->data << " ";
             current = current->next;

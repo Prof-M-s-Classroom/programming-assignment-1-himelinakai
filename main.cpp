@@ -14,7 +14,6 @@ int main() {
     SpaceRoute<string> voyagerRoute;
 
     voyagerRoute.addWaypointAtEnd(mars);
-
     voyagerRoute.addWaypointAtEnd(jupiter);
     voyagerRoute.addWaypointAtEnd(saturn);
     voyagerRoute.addWaypointAtBeginning(earth);
