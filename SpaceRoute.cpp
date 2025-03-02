@@ -90,26 +90,19 @@ public:
             return addWaypointAtBeginning(data);
         }
 
-        Node<T> *current = head;
+        Node<T> *current = getWaypoint(index);
         Node<T> *newNode = new Node<T>(data);
-
-        for (int i = 0; i < index && current != nullptr; i++) {
-            current = current->next;
-        }
-
-        if (current == nullptr) {
-            cout << "Invalid index." << endl;
-            return;
-        }
 
         if (current == tail) {
             return addWaypointAtEnd(data);
         }
 
-        newNode->prev = current->prev;
-        newNode->next = current;
-        current->prev->next = newNode;
-        current->prev = newNode;
+        if (current != nullptr) {
+            newNode->prev = current->prev;
+            newNode->next = current;
+            current->prev->next = newNode;
+            current->prev = newNode;
+        }
     }
 
     void removeWaypointAtBeginning() {
@@ -119,12 +112,17 @@ public:
         }
 
         Node<T> *current = head;
-        head = head->next;
-        if (head != nullptr) {
+
+        if (head == tail) {
+            head = nullptr;
+            tail = nullptr;
+        }
+        else {
+            head = head->next;
             head->prev = nullptr;
         }
-        delete current;
 
+        delete current;
     }
 
     void removeWaypointAtEnd() {
@@ -133,12 +131,18 @@ public:
             return;
         }
 
-        Node<T> *current = tail;
-        tail = tail->prev;
-        if (tail != nullptr) {
-            tail->next = nullptr;
+        if (head == tail) {
+            head = nullptr;
+            tail = nullptr;
         }
-        delete current;
+        else {
+            Node<T> *current = tail;
+            tail = tail->prev;
+            if (tail != nullptr) {
+                tail->next = nullptr;
+            }
+            delete current;
+        }
     }
 
     void removeWaypointAtIndex(int index) {
@@ -156,24 +160,17 @@ public:
             return removeWaypointAtBeginning();
         }
 
-        Node<T> *current = head;
-
-        for (int i = 0; i < index && current != nullptr; i++) {
-            current = current->next;
-        }
-
-        if (current == nullptr) {
-            cout << "Invalid index." << endl;
-            return;
-        }
+        Node<T> *current = getWaypoint(index);
 
         if (current == tail) {
             return removeWaypointAtEnd();
         }
 
-        current->prev->next = current->next;
-        current->next->prev = current->prev;
-        delete current;
+        if (current != nullptr) {
+            current->prev->next = current->next;
+            current->next->prev = current->prev;
+            delete current;
+        }
     }
 
     void traverseForward() {
