@@ -33,7 +33,25 @@ void addWaypointAtIndex(int index, T& data);
     so only the O(n) is considered. 
 
 void removeWaypointAtBeginning();
+
+    This function removes the first node of the list. It first checks that the list is not empty
+    so as to avoid any errors. If there is only one node in the list, it is deleted and the head 
+    and tail point to to null. Otherwise, the second node (head->next) becomes the new head and 
+    the first node is deleted.
+
+    The time complexity is O(1). The location of the first node is already known by head, 
+    so there is no traversing needed to find and delete it. All other commands have O(1) time.
+
 void removeWaypointAtEnd();
+
+    This function removes the last node of the list. It first checks that the list is not empty so 
+    as to avoid any errors. If there is only one node in the list, it is deleted and the head and
+    tail point to null. Otherwise, the second to last node (tail->prev) becomes the new tail and the
+    last node is deleted.
+
+    The time complexity is O(1). The location of the last node is already known by tail, 
+    so there is no traversing needed to find and delete it. All other commands have O(1) time.
+    
 void removeWaypointAtIndex(int index);
 void traverseForward();
 void traverseBackward();
