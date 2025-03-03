@@ -30,7 +30,7 @@ void addWaypointAtIndex(int index, T& data);
     The time complexity is O(n). The function calls the getWaypoint() function, which traverses 
     through the list up to the given index, which could be up to the last node in the worst case 
     scenario. That yields an O(n) time complexity. Every other command in the function runs to O(1)
-    so only the O(n) is considered. 
+    so only the O(n) is considered.                         
 
 void removeWaypointAtBeginning();
 
@@ -70,8 +70,8 @@ void traverseForward();
     the data value in each as it does. It does check if the list is empty and outputs a message if it
     is. 
 
-    The time complexity is O(n). The function is responsible for outputting the data in each node in 
-    the list, which means it must traverse through the entire length of it, which yields O(n). 
+    The time complexity is O(n). The function is responsible for outputting the data belonging to each node 
+    in the list, which means it must traverse through the entire length of it, which yields O(n). 
 
 void traverseBackward();
 
@@ -79,8 +79,8 @@ void traverseBackward();
     the data value in each as it does. It does check if the list is empty and outputs a message if it
     is.
 
-    The time complexity is O(n). The function is responsible for outputting the data in each node in 
-    the list, which means it must traverse through the entire length of it, which yields O(n). 
+    The time complexity is O(n). The function is responsible for outputting the data belonging to each node 
+    in the list, which means it must traverse through the entire length of it, which yields O(n). 
 
 Node<T>* getWaypoint(int index);
 
@@ -94,4 +94,20 @@ Node<T>* getWaypoint(int index);
 
 void setWaypoint(int index, T& data);
 
+    This function finds the node at a user-specified index within the list, and updates its data value to 
+    the new data imputed by the user, if it is a valid node in the list. It checks if the list is empty, 
+    and outputs a message if it is. If the given index is less than 0, or greater than the preexisting list's 
+    length, an error message will be printed. 
+
+    The time complexity is O(n). The function calls the getWaypoint() function, which traverses 
+    through the list up to the given index, which could be up to the last node in the worst case 
+    scenario. That yields an O(n) time complexity. Every other command in the function runs to O(1)
+    so only the O(n) is considered.  
+
 void print();
+
+    This function traverses through the list and prints the data value of every node. It checks if the
+    list is empty and prints a message if it is. 
+
+    The time complexity is O(n). The function is responsible for outputting the data belonging to every node 
+    in the list, which means it must traverse through the entire length of it, which yields O(n). 
