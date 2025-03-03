@@ -28,7 +28,7 @@ void addWaypointAtIndex(int index, T& data);
     The new node's next pointer points to the node that was previously in the specified index.
 
     The time complexity is O(n). The function calls the getWaypoint() function, which traverses 
-    through the array up to the given index, which could be up to the last node in the worst case 
+    through the list up to the given index, which could be up to the last node in the worst case 
     scenario. That yields an O(n) time complexity. Every other command in the function runs to O(1)
     so only the O(n) is considered. 
 
@@ -53,8 +53,45 @@ void removeWaypointAtEnd();
     so there is no traversing needed to find and delete it. All other commands have O(1) time.
     
 void removeWaypointAtIndex(int index);
+
+    This function removes the node at a user-specified index in the list. It first checks that the
+    list is not empty so as to avoid any errors. If the given index is less than 0, or greater than 
+    the preexisting list's length, an error message will be printed. If the index is valid, the node
+    at the given index is deleted, and the list is properly reconnected where the deleted node was. 
+
+    The time complexity is O(n). The function calls the getWaypoint() function, which traverses 
+    through the list up to the given index, which could be up to the last node in the worst case 
+    scenario. That yields an O(n) time complexity. Every other command in the function runs to O(1)
+    so only the O(n) is considered.
+
 void traverseForward();
+
+    This function traverses through the entire linked list from the first node to the last, printing
+    the data value in each as it does. It does check if the list is empty and outputs a message if it
+    is. 
+
+    The time complexity is O(n). The function is responsible for outputting the data in each node in 
+    the list, which means it must traverse through the entire length of it, which yields O(n). 
+
 void traverseBackward();
+
+    This function traverses through the entire linked list from the last node to the first, printing
+    the data value in each as it does. It does check if the list is empty and outputs a message if it
+    is.
+
+    The time complexity is O(n). The function is responsible for outputting the data in each node in 
+    the list, which means it must traverse through the entire length of it, which yields O(n). 
+
 Node<T>* getWaypoint(int index);
+
+    This function returns the address of the node at a user-specified index within the list, if the index
+    is valid. It checks if the list is empty, outputs a message if it is and returns null. If the given 
+    index is less than 0, or greater than the preexisting list's length, an error message will be printed 
+    and null will be returned. 
+
+    The time complexity is O(n). The function traverses through the list up to the given index, which could 
+    be up to the last node in the worst case scenario. That yields an O(n) time complexity.
+
 void setWaypoint(int index, T& data);
+
 void print();
